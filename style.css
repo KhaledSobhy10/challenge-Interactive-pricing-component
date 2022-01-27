@@ -1,0 +1,380 @@
+/* Start Global Rules */
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+:root {
+  /* colors */
+
+  /* (Full Slider Bar) */
+  --softCyan: hsl(174, 77%, 80%);
+
+  /* (Slider Backround) */
+  --strongCyan: hsl(174, 86%, 45%);
+
+  /* (Discount Background) */
+  --lightGrayishRed: hsl(14, 92%, 95%);
+
+  /*  (Discount Text) */
+  --lightRed: hsl(15, 100%, 70%);
+
+  /* (CTA Text) */
+  --paleBlue: hsl(226, 100%, 87%);
+
+  /* (Pricing Component Background) */
+  --white: hsl (0, 0%, 100%);
+
+  /* (Main Background) */
+  --veryPaleBlue: hsl(230, 100%, 99%);
+
+  /* (Empty Slider Bar) */
+  --lightGrayishBlue: hsl(224, 65%, 95%);
+
+  /*  (Toggle Background) */
+  --lightGrayishMoreBlue: hsl(223, 50%, 87%);
+
+  /* (Text) */
+  --grayishBlue: hsl(225, 20%, 60%);
+
+  /*  (Text & CTA Background) */
+  --darkDesaturatedBlue: hsl(227, 35%, 25%);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+  padding: 5px;
+}
+
+.center {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+}
+
+.container {
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-left: auto;
+  margin-right: auto;
+}
+/* Small */
+@media (min-width: 768px) {
+  .container {
+    width: 750px;
+  }
+}
+
+/* large */
+@media screen and (min-width: 1400px) {
+  body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    height: 100vh;
+  }
+}
+
+/* body */
+body {
+  font-family: "Manrope", sans-serif;
+  background-image: url(images/bg-pattern.svg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: var(--veryPaleBlue);
+}
+/* end body */
+
+/* header  */
+header {
+  padding: 10px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  background-image: url(images/pattern-circles.svg);
+  background-repeat: no-repeat;
+  background-position: 50%;
+  background-size: contain;
+}
+
+header h1 {
+  color: var(--darkDesaturatedBlue);
+  font-size: 25px;
+}
+
+header p {
+  color: var(--grayishBlue);
+  font-size: 15px;
+}
+/* end header */
+
+/* main  */
+.card {
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 0px 5px 10px -2px var(--lightGrayishMoreBlue);
+}
+
+.first-part,
+.second-part {
+  padding: 25px;
+}
+
+.first-part {
+  display: grid;
+  grid-template-areas:
+    "planTitle pricing"
+    "slider slider"
+    "billing billing";
+}
+
+@media (max-width: 400px) {
+  .first-part {
+    grid-template-areas:
+      "planTitle planTitle"
+      "slider slider"
+      "pricing pricing"
+      "billing billing";
+  }
+}
+
+.second-part {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 400px) {
+  .second-part {
+    justify-content: center;
+  }
+}
+
+.plan-title {
+  text-transform: uppercase;
+  font-size: 15px;
+  color: var(--grayishBlue);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  grid-area: planTitle;
+}
+
+.pricing {
+  display: flex;
+  font-size: 25px;
+  font-weight: bolder;
+  align-items: center;
+  justify-content: center;
+  color: var(--darkDesaturatedBlue);
+  grid-area: pricing;
+}
+
+.pricing span {
+  color: var(--grayishBlue);
+  font-weight: lighter;
+  padding-left: 10px;
+  font-size: 14px;
+}
+
+/* custom range slider */
+.slide-container {
+  grid-area: slider;
+  width: 100%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  position: relative;
+}
+
+/* The slider itself */
+.slider {
+  position: relative;
+  -webkit-appearance: none; /* Override default CSS styles */
+  appearance: none;
+  width: 100%;
+  height: 7px;
+  z-index: 1;
+  background-color: transparent;
+}
+
+/* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none; /* Override default look */
+  appearance: none;
+  width: 30px;
+  height: 30px;
+  background: var(--strongCyan);
+  cursor: grabbing;
+  border-radius: 50%;
+  background-image: url(images/icon-slider.svg);
+  background-repeat: no-repeat;
+  background-position: 50%;
+  box-shadow: 0px 3px 10px 5px var(--softCyan);
+  transition: 0.3s background-color;
+  outline: none;
+  border: none;
+}
+
+.slider:hover::-webkit-slider-thumb {
+  background-color: hsl(174, 86%, 36%);
+}
+
+.bar {
+  background-color: var(--lightGrayishBlue);
+  width: 100%;
+  height: 7px;
+  border-radius: 10px;
+  position: absolute;
+  top: 20px;
+  left: 0px;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+}
+
+.bar .filled {
+  width: 50%;
+  height: 100%;
+  border-radius: inherit;
+  background-color: var(--softCyan);
+}
+
+.slider::-moz-range-thumb {
+  appearance: none;
+  width: 30px;
+  height: 30px;
+  background: var(--strongCyan);
+  cursor: grabbing;
+  border-radius: 50%;
+  background-image: url(images/icon-slider.svg);
+  background-repeat: no-repeat;
+  background-position: 50%;
+  box-shadow: 0px 3px 10px 5px var(--softCyan);
+  transition: 0.3s background-color;
+  outline: none;
+  border: none;
+}
+/* end custom range slider */
+
+.billing {
+  grid-area: billing;
+  margin-top: 30px;
+  color: var(--grayishBlue);
+  font-size: 13px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.billing h3 {
+  font-size: 13px;
+  white-space: nowrap;
+}
+.billing span {
+  background-color: var(--lightGrayishRed);
+  color: var(--lightRed);
+  border-radius: 10px;
+  padding: 4px;
+  font-size: 11px;
+}
+.billing span:last-of-type {
+  display: none;
+}
+
+@media (max-width: 400px) {
+  .first-part {
+    padding: 10px;
+  }
+  .billing {
+    flex-wrap: wrap;
+  }
+  .billing span:last-of-type {
+    display: inline;
+  }
+
+  .billing span:first-of-type {
+    display: none;
+  }
+}
+
+/* custom checkbox make it (switch button)*/
+input[type="checkbox"] {
+  appearance: none;
+  width: 45px;
+  height: 20px;
+  background-color: var(--lightGrayishBlue);
+  border-radius: 10px;
+  position: relative;
+  transition: 0.3s background-color;
+  cursor: pointer;
+  outline: none;
+}
+
+input[type="checkbox"]::after {
+  position: absolute;
+  top: 50%;
+  left: 3px;
+  transform: translateY(-50%);
+  content: "";
+  border: 7px solid white;
+  border-radius: 50%;
+  transition: 0.3s left;
+}
+
+input[type="checkbox"]:checked {
+  background-color: var(--strongCyan);
+}
+input[type="checkbox"]:checked::after {
+  left: 28px;
+}
+
+/* end custom checkbox make it (switch button)*/
+
+hr {
+  color: var(--lightGrayishBlue);
+  background-color: var(--lightGrayishBlue);
+  border-color: var(--lightGrayishBlue);
+  opacity: 0.6;
+}
+
+li {
+  padding: 10px;
+  color: var(--darkDesaturatedBlue);
+}
+img {
+  margin-right: 10px;
+}
+
+button {
+  outline: none;
+  border: none;
+  border-radius: 25px;
+  color: white;
+  background-color: var(--darkDesaturatedBlue);
+  padding: 10px 25px;
+  cursor: pointer;
+  opacity: 0.95;
+  transform: 0.3s opacity;
+  justify-self: center;
+  margin-top: 20px;
+}
+
+button:hover {
+  opacity: 1;
+}
+
+/* end main */
